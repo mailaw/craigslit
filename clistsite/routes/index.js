@@ -21,18 +21,22 @@ router.get('/', function(req, res, next) {
       console.log("RESULTS here", results)
     }
   })
-  res.render('index', {posts: results });
+  res.render('entry');
 });
 
+router.get('/')
+
 router.post('/savePost', function(request, response, next) {
-  console.log("YO", request.body);
-  // new Post(
-  //   img: ,
-  //   title: ,
-  //   description: ,
-  //   email: ,
-  //   phone:
-  // )}
+  console.log("YO", request.body.img);
+  var body = JSON.parse(request.body);
+  console.log("MANE\n", body.img)
+  new Post({
+    img: request.body.img
+    // title: request.body.title ,
+    // description: request.body.description ,
+    // email: request.body.email,
+    // phone: request.body.phone
+  })
 
 })
 

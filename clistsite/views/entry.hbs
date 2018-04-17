@@ -62,13 +62,14 @@
     }
     //called inside getJpg
     function savePost(dataObject){
-      console.log("dataob", dataObject);
+      console.log("dataob", dataObject.imgBase64);
     	$.ajax({
           method: 'POST',
           url: "http://localhost:3000/savePost",
           contentType: 'application/json',
-          data: JSON.stringify({data: dataObject}),
+          data: JSON.stringify({img: dataObject}),
           crossDomain: true,
+          dataType: 'json',
           //dataType: 'json',
           success: function(data) {
             console.log("post saved~ ", data);
