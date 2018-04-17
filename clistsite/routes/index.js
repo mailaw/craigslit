@@ -12,34 +12,27 @@ Post.find({}, function(err, results){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  //this is a test
-  //res.render('index', {title: 'Express'});
+  res.render('index');
+});
 
-  Post.find({}, function(err, results){
-    if(err){console.error(err)}
-    else{
-      console.log("Posts currently in our Database \n", results)
-    }
-  })
+router.get('/', function(req, res, next) {
   res.render('entry');
 });
 
-router.get('/')
-
 router.post('/savePost', function(request, response, next) {
-  console.log("Received by /savePost", request.body.title, request.body.description, request.body.email, request.body.phone);
+  console.log("Data received by /savePost",request.body.title, request.body.description, request.body.email, request.body.phone);
   new Post({
     img: request.body.img,
     title: request.body.title ,
     description: request.body.description ,
     email: request.body.email,
     phone: request.body.phone
-  }).save(function(err){
+  }).save(function(err, success){
     if(err){
       console.log("error saving post ", err )
     }
     else{
-      console.log("POST SAVED to DB")
+      console.log("POST SAVED to DB", success)
     }
   })
 
