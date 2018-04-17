@@ -10,8 +10,8 @@
 
 
 
-    <input type="text" id="contactChoice1" name="contact" value="email">
-    <input type="text" id="contactChoice2" name="contact" value="phone">
+    <input type="text" id="email" name="contact" value="email">
+    <input type="text" id="phone" name="contact" value="phone">
 
     <br>
     <textarea class="req" tabindex="1" rows="10" id="PostingBody" name="PostingBody" placeholder="posting body"></textarea>
@@ -62,12 +62,20 @@
     }
     //called inside getJpg
     function savePost(dataObject){
+      let title = $("#title").val()
+      let description = $('#PostingBody').val()
+      let email = $('#email').val()
+      let phone = $('#phone').val()
+      // title: request.body.title ,
+    // description: request.body.description ,
+    // email: request.body.email,
+    // phone: request.body.phone
       console.log("dataob", dataObject.imgBase64);
     	$.ajax({
           method: 'POST',
           url: "http://localhost:3000/savePost",
           contentType: 'application/json',
-          data: JSON.stringify({img: dataObject}),
+          data: JSON.stringify({img: dataObject, title, description, email, phone}),
           crossDomain: true,
           dataType: 'json',
           //dataType: 'json',

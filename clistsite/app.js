@@ -15,7 +15,7 @@ var mongoose = require('mongoose');
 var MONGO_URL = process.env.MONGO_URL;
 console.log(MONGO_URL)
 mongoose.connect(MONGO_URL, function(err){
-  if (err) throw "YOOOOOOOOOOO" + err;
+  if (err) throw "Error connecting to MLab" + err;
   else{console.log("DATABASE CONNECTED!!!")}
 });
 var Schema = mongoose.Schema;

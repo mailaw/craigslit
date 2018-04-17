@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
   Post.find({}, function(err, results){
     if(err){console.error(err)}
     else{
-      console.log("RESULTS here", results)
+      console.log("Posts currently in our Database \n", results)
     }
   })
   res.render('entry');
@@ -27,15 +27,20 @@ router.get('/', function(req, res, next) {
 router.get('/')
 
 router.post('/savePost', function(request, response, next) {
-  console.log("YO", request.body.img);
-  var body = JSON.parse(request.body);
-  console.log("MANE\n", body.img)
+  console.log("Received by /savePost", request.body.title, request.body.description, request.body.email, request.body.phone);
   new Post({
-    img: request.body.img
-    // title: request.body.title ,
-    // description: request.body.description ,
-    // email: request.body.email,
-    // phone: request.body.phone
+    img: request.body.img,
+    title: request.body.title ,
+    description: request.body.description ,
+    email: request.body.email,
+    phone: request.body.phone
+  }).save(function(err){
+    if(err){
+      console.log("error saving post ", err )
+    }
+    else{
+      console.log("POST SAVED to DB")
+    }
   })
 
 })
