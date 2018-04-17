@@ -1,0 +1,83 @@
+<html>
+  <body>
+      <form id="entry" action="">
+    <div class="row">
+      <input id="title" type="text" maxlength="70" placeholder="posting title">
+    </div>
+    <div class="row">
+        <input id="price" placeholder="price">
+    </div>
+
+
+
+    <input type="text" id="contactChoice1" name="contact" value="email">
+    <input type="text" id="contactChoice2" name="contact" value="phone">
+
+    <br>
+    <textarea class="req" tabindex="1" rows="10" id="PostingBody" name="PostingBody" placeholder="posting body"></textarea>
+    <br>
+    <input type="file" id="upload" accept="image/jpeg">
+    <button onclick="getJpg()">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+    //image.data, img.contenttype title, expiration date, upload date
+
+    // function myFunction() {
+    //     var x = document.createElement("Input");
+    //     x.setAttribute("type", "file");
+    //     x.setAttribute("id", "upload");
+    //     x.setAttribute("accept", "image/jpeg");
+    //     x.setAttribute("onchange", "getJpg()");
+    //     document.body.appendChild(x);
+    // }
+
+    function getJpg(){
+    	var upload = document.getElementById("upload");
+      if ('files' in upload) { //has name, type, and size
+          if (upload.files.length == 0) {
+              alert("Choose one or more files");
+          } else {
+              for (var i = 0; i < upload.files.length; i++) {
+                var file = upload.files[i];
+                //console.log('file yo', file)
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function(){
+                  var result = reader.result.replace("data:"+ file.type +";base64,", '');
+                  console.log("yo~~~~~\n", result);
+                  savePost(result);
+                };
+              }
+          }
+      }
+      else {
+          if (upload.value == "") {
+              alert("Select one or more files.");
+          } else {
+              alert("The files property is not supported by your browser!");
+          }
+      }
+    }
+    //called inside getJpg
+    function savePost(dataObject){
+      console.log("dataob", dataObject);
+    	$.ajax({
+          method: 'POST',
+          url: "http://localhost:3000/savePost",
+          contentType: 'application/json',
+          data: JSON.stringify({data: dataObject}),
+          crossDomain: true,
+          //dataType: 'json',
+          success: function(data) {
+            console.log("post saved~ ", data);
+          },
+          error: function(err){
+            console.log("couldn't save post", err);
+          }
+    	})
+    };
+    </script>
+  </body>
+</html>

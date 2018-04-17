@@ -28,6 +28,41 @@
 
 
 </head>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type: 'GET',
+            crossDomain: true,
+            url: "http://localhost:3000/getPost",
+            success: function(result){
+                $("#container").html("");
+                for(var i = 0; i < result.length;i++){
+                    var obj = result[i].img.data;
+                    var img = "data:image/jpeg;base64,"+obj.slice(0, -1);
+                    $("#container").append("<img class='picture'src='"+img+"'/>");
+                }
+            }});
+    });
+    function getPost(cat){
+        console.log("CATEGORY="+ cat)
+        $.ajax({
+            type: 'GET',
+            crossDomain: true,
+            url: "http://localhost:3000/getPost?category="+cat,
+            success: function(result){
+                $("#container").empty();
+                $("#container").html("");
+                for(var i = 0; i < result.length;i++){
+                    var obj = result[i].img.data;
+                    var img = "data:image/jpeg;base64,"+obj.slice(0, -1);
+                    $("#container").append("<img class='picture'src='"+img+"'/>");
+                }
+            }
+        });
+    }
+</script>
+
+
 <body class="homepage en">
 <script type="text/javascript"><!--
     function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
@@ -124,7 +159,7 @@
 <ul class="breadcrumbs">
 
 
-raleigh
+chapel hill
 
 
 </ul>
@@ -278,12 +313,6 @@ raleigh
 				        	<h4 class="ban">personals</h4>
 				        	<div class="cats">
 				        		<ul id="ppp0" >
-											<!--li><a href="https://www.craigslist.org/about/FOSTA" class="stp" data-cat="stp"><span class="txt">strictly platonic<sup class="c"></sup></span></a></li>
-											<li><a href="https://www.craigslist.org/about/FOSTA" class="w4w" data-cat="w4w"><span class="txt">women seek women<sup class="c"></sup></span></a></li>
-											<li><a href="https://www.craigslist.org/about/FOSTA" class="w4m" data-cat="w4m"><span class="txt">women seeking men<sup class="c"></sup></span></a></li>
-											<li><a href="https://www.craigslist.org/about/FOSTA" class="m4w" data-cat="m4w"><span class="txt">men seeking women<sup class="c"></sup></span></a></li>
-											<li><a href="https://www.craigslist.org/about/FOSTA" class="m4m" data-cat="m4m"><span class="txt">men seeking men<sup class="c"></sup></span></a></li>
-											<li><a href="https://www.craigslist.org/about/FOSTA" class="msr" data-cat="msr"><span class="txt">misc romance<sup class="c"></sup></span></a></li-->
 											<li><a href="https://www.craigslist.org/about/FOSTA" class="cas" data-cat="cas"><span class="txt">casual encounters<sup class="c"></sup></span></a></li>
 										</ul>
 									</div>

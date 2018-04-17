@@ -1,8 +1,8 @@
-function savePoster(dataObject){
+function savePost(dataObject){
     alert("Event saved! Return to home.")
 	$.ajax({
       method: 'POST',
-      url: "http://localhost:3000/savePoster",
+      url: "http://localhost:3000/savePost",
       contentType: 'application/json',
       data: JSON.stringify({data: dataObject}),
       crossDomain: true,
@@ -42,7 +42,7 @@ function getJpg(){
                     return function(e) {
                         img.src = e.target.result;
                         var imgData =  e.target.result.replace("data:"+ file.type +";base64,", '');
-                        savePoster({imgData, title, eventDate, organization, category});
+                        savePost({imgData, title, eventDate, organization, category});
                     };
                 })(y);
                 reader.readAsDataURL(file);
