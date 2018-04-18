@@ -10,8 +10,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/feed', function(req, res, next){
-  res.render('feed')
+  var postsArray = [];
+  Post.find(function(err, posts){
+    postsArray = posts
+    console.log(posts)
+  })
+  console.log(postsArray);
+  setTimeout(function(){res.render('feed', {postsArray: postsArray})}, 500)
 })
+// { uploadDate: 2018-04-17T23:34:06.729Z,
+//     _id: 5ad6846e02ab0c105eb08945,
+//     title: 'asd',
+//     description: 'asd',
+//     email: 'email',
+//     phone: 'phone',
+//     __v: 0 }
 router.post('/savePost', function(request, response, next) {
   console.log("Data received by /savePost",request.body)
   new Post({
