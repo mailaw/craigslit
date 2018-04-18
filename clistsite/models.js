@@ -13,14 +13,6 @@ var postSchema = new Schema({
     //category: {type: String, required: true, enum: ['for exchange','personals'], default: 'for exchange'},
 });
 
-// Virtual for post's URL
-//returns the absolute URL required to get a particular instance of the model
-postSchema
-.virtual('url')
-.get(function () {
-  return '/catalog/post/' + this._id;
-});
-
 
 //potentially change clist > post
 //module.exports = mongoose.model("cList", clistSchema);

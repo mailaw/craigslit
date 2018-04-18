@@ -1,112 +1,185 @@
 
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <title>craigslist</title>
+<head>
+<title>{{title}}</title>
 
-        <meta name="description" content="raleigh pets  - craigslist">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-        <link rel="canonical" href="https://raleigh.craigslist.org/search/pet">
-        <link rel="alternate" type="application/rss+xml" href="https://raleigh.craigslist.org/search/pet?format=rss" title="RSS feed for craigslist | raleigh pets  - craigslist">
-          <link rel="next" href="https://raleigh.craigslist.org/search/pet?s=120">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link type="text/css" rel="stylesheet" media="all" href="//www.craigslist.org/styles/cl.css?v=f2b739aac0ce30a61818c1630276321d">
-        <link type="text/css" rel="stylesheet" media="all" href="//www.craigslist.org/styles/search.css?v=c44c231dbc270469197515799aee6b3c">
-        <link type="text/css" rel="stylesheet" media="all" href="//www.craigslist.org/styles/jquery-ui-clcustom.css?v=3b05ddffb7c7f5b62066deff2dda9339">
-        <link type="text/css" rel="stylesheet" media="all" href="//www.craigslist.org/styles/leaflet.css?v=a3659216b188171f9645f20cd0b4e60e">
-        <link type="text/css" rel="stylesheet" media="all" href="//www.craigslist.org/styles/MarkerCluster.css?v=9bea97021e746649c6837e95dd9723e8">
-        <link type="text/css" rel="stylesheet" media="all" href="//www.craigslist.org/styles/tocsmaps.css?v=d3ac18e00752d21e15dc93be93a12756">
-				<link href="../public/stylesheets/style.css" rel="stylesheet">
+<meta name="twitter:card" content="preview">
+<meta name="viewport" content="width=device-width,initial-scale=1"><link type="text/css" rel="stylesheet" media="all" href="https://www.craigslist.org/styles/cl.css?v=f2b739aac0ce30a61818c1630276321d">
+<link type="text/css" rel="stylesheet" media="all" href="https://www.craigslist.org/styles/postings.css?v=44664b7f67211b8957e950af9ce9164d">
+<link type="text/css" rel="stylesheet" media="all" href="https://www.craigslist.org/styles/leaflet.css?v=a3659216b188171f9645f20cd0b4e60e">
 
-    </head>
+</head>
 
-    <body class="search has-map en">
-        <script type="text/javascript"><!--
-        function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
-        var pagetype, pagemode;
-        (function(){
-            var h = document.documentElement;
-            h.className = h.className.replace('no-js', 'js');
-            var b = document.body;
-            var bodyClassList = b.className.split(/\s+/);;
-            pagetype = bodyClassList[0]; // dangerous assumption
-            var fmt = C('cl_fmt');
-            if ( fmt === 'regular' || fmt === 'mobile' ) {
-                pagemode = fmt;
-            } else if (screen.width <= 480) {
-                pagemode = 'mobile';
-            } else {
-                pagemode = 'regular';
+<body class="posting en">
+
+<script type="text/javascript"><!--
+    function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
+    var pagetype, pagemode;
+    (function(){
+        var h = document.documentElement;
+        h.className = h.className.replace('no-js', 'js');
+        var b = document.body;
+        var bodyClassList = b.className.split(/\s+/);;
+        pagetype = bodyClassList[0]; // dangerous assumption
+        var fmt = C('cl_fmt');
+        if ( fmt === 'regular' || fmt === 'mobile' ) {
+            pagemode = fmt;
+        } else if (screen.width <= 480) {
+            pagemode = 'mobile';
+        } else {
+            pagemode = 'regular';
+        }
+        pagemode = pagemode === 'mobile' ? 'mobile' : 'desktop';
+        bodyClassList.push(pagemode);
+        if (C('hidesearch') === '1' && pagemode !== 'mobile') {
+            bodyClassList.push('hide-search');
+        }
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width > 1000) { bodyClassList.push('w1024'); }
+        if (typeof window.sectionBase !== 'undefined') {
+            var mode = (decodeURIComponent(C('cl_tocmode') || '').match(new RegExp(window.sectionBase + ':([^,]+)', 'i')) || {})[1] || window.defaultView;
+            if (mode) {
+                bodyClassList.push(mode);
             }
-            pagemode = pagemode === 'mobile' ? 'mobile' : 'desktop';
-            bodyClassList.push(pagemode);
-            if (C('hidesearch') === '1' && pagemode !== 'mobile') {
-                bodyClassList.push('hide-search');
-            }
-            var width = window.innerWidth || document.documentElement.clientWidth;
-            if (width > 1000) { bodyClassList.push('w1024'); }
-            if (typeof window.sectionBase !== 'undefined') {
-                var mode = (decodeURIComponent(C('cl_tocmode') || '').match(new RegExp(window.sectionBase + ':([^,]+)', 'i')) || {})[1] || window.defaultView;
-                if (mode) {
-                    bodyClassList.push(mode);
-                }
-            }
-            b.className = bodyClassList.join(' ');
-        }());
-    -->
-        </script>
+        }
+        b.className = bodyClassList.join(' ');
+    }());
+--></script>
 
-
-    <section class="page-container" id="page-top">
+    <section class="page-container">
         <div class="bglogo"></div>
-        <header class="global-header wide">
-            <a class="header-logo" name="logoLink" href="/">CL</a>
-        </header>
+          <header class="global-header wide">
+             <a class="header-logo" name="logoLink" href="/">CL</a>
+          </header>
+          <header class="global-header narrow">
+             <a class="header-logo" href="/">CL</a>
+              <nav class="breadcrumbs-container">
+                  <ul class="breadcrumbs">
+                  chapel hill            &gt;
+                  </ul>
+              </nav>
+              <span class="linklike show-wide-header">...</span>
+          </header>
+              <section class="body">
+                  <header class="dateReplyBar">
+                      <div class="prevnext-sec">
+                        <div class="prevnext js-only">
+                        </div>
+                      </div>
+                      <button class="reply_button js-only">reply
+                        <span class="phone"></span>
+                      </button>
+                      <span class="replylink">
+                        <a id="replylink" href=""></a>
+                      </span>
 
-        <header class="global-header narrow">
-           <a class="header-logo" href="/">CL</a>
-            <nav class="breadcrumbs-container">
-                <ul class="breadcrumbs">
-                chapel hill           &gt;
-                </ul>
-            </nav>
-        </header>
+                      <p class="print-information print-contact">
+                              Contact Information: <span class="print-email"></span> <span class="print-phone"></span>
+                      </p>
+                      <a href="#" id="printme">print</a>
+                  </header>
 
-	<!-- { uploadDate: 2018-04-17T23:34:49.269Z,
-    _id: 5ad68499f0db57106276c153,
-    title: 'asd',
-    description: 'asd',
-    email: 'email',
-    phone: 'phone',
-    __v: 0 }, -->
-	<ul class="people_list">
-	  {{#each postsArray}}
-	    <li class="list-element"><a href="/entry/{{this._id}}"> {{this.title}} | {{this.description}}</a></li>
-	  {{/each}}
-	</ul>
+                  <h2 class="postingtitle">
+                      <span class="icon icon-star" role="button">
+                          <span class="screen-reader-text">favorite this post</span>
+                      </span>
+                      <span class="postingtitletext">
+                          <span id="titletextonly">{{this.title}}</span><small> (chapel hill)</small><span class="js-only banish-unbanish">
+                            <span class="banish" role="button">
+                              <span class="icon icon-trash" aria-hidden="true"></span>
+                              <span class="screen-reader-text">hide this posting</span>
+                            </span>
+                            <span class="unbanish" role="button">
+                              <span class="icon icon-trash red" aria-hidden="true"></span>
+                              unhide
+                            </span>
+                          </span>
+                      </span>
+                  </h2>
+                  <section class="userbody">
+                      <figure class="iw multiimage">
+                          <div class="gallery">
+                              <span class="slider-back arrow">&lt;</span>
+                              <!--span class="slider-info">image 1 of 2</span>
+                              <span class="slider-forward arrow">&gt;</span-->
+                              <div class="swipe">
+                                  <div class="swipe-wrap"><div id="1_image_8KRY4ky6UAs" data-imgid="8KRY4ky6UAs" class="slide first visible"><img src="https://images.craigslist.org/00v0v_8KRY4ky6UAs_600x450.jpg" title=" 1" alt=" 1"></div><div id="2_image_6pNV6gNmihj" data-imgid="6pNV6gNmihj" class="slide "></div></div>
+                              </div>
+                          </div>
+
+                          <div id="thumbs">
+                            <a id="1_thumb_8KRY4ky6UAs" class="thumb" data-imgid="8KRY4ky6UAs" href="https://images.craigslist.org/00v0v_8KRY4ky6UAs_600x450.jpg" title="1">
+                              <img src="https://images.craigslist.org/00v0v_8KRY4ky6UAs_50x50c.jpg" class="selected" alt=" 1">
+                            </a>
+                            <!--a id="2_thumb_6pNV6gNmihj" class="thumb" data-imgid="6pNV6gNmihj" href="https://images.craigslist.org/00O0O_6pNV6gNmihj_600x450.jpg" title="2">
+                              <img src="https://images.craigslist.org/00O0O_6pNV6gNmihj_50x50c.jpg"  alt=" 2">
+                            </a-->
+                          </div>
+                          <script type="text/javascript"><!--
+                      var imgList = [{"shortid":"8KRY4ky6UAs","url":"https://images.craigslist.org/00v0v_8KRY4ky6UAs_600x450.jpg","thumb":"https://images.craigslist.org/00v0v_8KRY4ky6UAs_50x50c.jpg","imgid":"1:00v0v_8KRY4ky6UAs"},{"shortid":"6pNV6gNmihj","url":"https://images.craigslist.org/00O0O_6pNV6gNmihj_600x450.jpg","thumb":"https://images.craigslist.org/00O0O_6pNV6gNmihj_50x50c.jpg","imgid":"1:00O0O_6pNV6gNmihj"}];
+                      --></script>
+                      </figure>
+
+                      <section id="postingbody">
+                              <p>{{description}}</p>
+                              <br>
 
 
+                      </section>
 
-	    <footer>
-	        <ul class="clfooter">
-	            <li>&copy;  <span class="desktop">craigslist</span><span class="mobile">CL</span></li>
-	            <li><a href="https://www.craigslist.org/about/help/">help</a></li>
-	            <li><a href="https://www.craigslist.org/about/scams">safety</a></li>
-	            <li class="desktop"><a href="https://www.craigslist.org/about/privacy.policy">privacy</a></li>
-	            <li class="desktop"><a href="https://forums.craigslist.org/?forumID=8">feedback</a></li>
-	            <li class="desktop"><a href="https://www.craigslist.org/about/craigslist_is_hiring">cl jobs</a></li>
-	            <li><a href="//www.craigslist.org/about/terms.of.use.en">terms</a><sup class="neu">new</sup></li>
-	            <li><a href="https://www.craigslist.org/about/">about</a></li>
-	            <li class="fsel desktop linklike" data-mode="mobile">mobile</li>
-	            <li class="fsel mobile linklike" data-mode="regular">desktop</li>
-	        </ul>
-	    </footer>
-	    </section>
+                      <div>
+                          <p>reply to {{this.email}} or {{this.phone}} </p>
 
-	    <script src="//www.craigslist.org/js/general-concat.min.js?v=add23877c18964abbf775789fb49e5ae" type="text/javascript" ></script>
-	    <script src="//www.craigslist.org/js/leaflet-concat.min.js?v=aca55d2d00192f2c025502eb87b34798" type="text/javascript" ></script>
-	    <script src="//www.craigslist.org/js/search-concat.min.js?v=3e7f6c249c472f4727b9a867af2efea8" type="text/javascript" ></script>
-	    <script src="//www.craigslist.org/js/postings-concat.min.js?v=1c6f701ac77746c798c33ff7800297a5" type="text/javascript" ></script>
+                      </div>
 
-	   </body>
-	</html>
+                      <ul class="notices">
+                                  <li>do NOT contact me with unsolicited services or offers</li>
+                      </ul>
+
+                      <div class="postinginfos">
+                              <p class="postinginfo">post id: {{_id}} </p>
+                              <p class="postinginfo reveal">posted: {{this.uploadDate}}</p>
+                      </div>
+
+                      <div class="print-information print-pics">{{img}}</div>
+          </section>
+        </section>
+    </section>
+</body>
+
+<footer>
+    <ul class="clfooter">
+        <li>&copy;  <span class="desktop">craigslist</span><span class="mobile">CL</span></li>
+        <li><a href="https://www.craigslist.org/about/help/">help</a></li>
+        <li><a href="https://www.craigslist.org/about/scams">safety</a></li>
+        <li class="desktop"><a href="https://www.craigslist.org/about/privacy.policy">privacy</a></li>
+        <li class="desktop"><a href="https://forums.craigslist.org/?forumID=8">feedback</a></li>
+        <li class="desktop"><a href="https://www.craigslist.org/about/craigslist_is_hiring">cl jobs</a></li>
+        <li><a href="//www.craigslist.org/about/terms.of.use.en">terms</a><sup class="neu">new</sup></li>
+        <li><a href="https://www.craigslist.org/about/">about</a></li>
+        <li class="fsel desktop linklike" data-mode="mobile">mobile</li>
+        <li class="fsel mobile linklike" data-mode="regular">desktop</li>
+    </ul>
+</footer>
+
+
+<script type="text/javascript"><!--
+var countOfTotalText = "image {count} of {total}";
+var imageConfig = {"1":{"hostname":"https://images.craigslist.org","sizes":["50x50c","300x300","600x450","1200x900"]},"0":{"hostname":"https://images.craigslist.org","sizes":["50x50c","300x300","600x450"]},"2":{"hostname":"https://images.craigslist.org","sizes":["50x50c","300x300","600x450","1200x900"]}};
+var maptileBaseUrl = "//map{s}.craigslist.org/t09/{z}/{x}/{y}.png";
+var pID = 6564279967;
+--></script>
+
+<script src="//www.craigslist.org/js/general-concat.min.js?v=add23877c18964abbf775789fb49e5ae" type="text/javascript" ></script>
+<script type="text/javascript"><!--
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = '//www.' + CL.url.baseDomain + '/static/localstorage.html?v=51a29e41f8e978141e4085ed4a77d170';
+        document.body.insertBefore(iframe, null);
+    --></script>
+<script src="//www.craigslist.org/js/leaflet-concat.min.js?v=aca55d2d00192f2c025502eb87b34798" type="text/javascript" ></script>
+
+<script src="//www.craigslist.org/js/postings-concat.min.js?v=1c6f701ac77746c798c33ff7800297a5" type="text/javascript" ></script>
+
+</html>

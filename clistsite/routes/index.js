@@ -13,6 +13,20 @@ router.get('/entry', function(req, res, next) {
   res.render('entry');
 });
 
+
+router.get('/entry_indv/:_id', function(req, res, next) {
+  //var postID = :_id
+  //console.log(req.params);
+  res.send("id is set as" + req.params._id);
+  //res.render('entry_indv');
+  //res.render('entry_indv', function(err, html){
+    //res.send('<p>some html{{:id}}</p>');
+    //res.send('entry_indv');
+  //});
+});
+
+
+
 router.get('/feed', function(req, res, next){
   var postsArray = [];
   Post.find(function(err, posts){
