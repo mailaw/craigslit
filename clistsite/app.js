@@ -15,7 +15,7 @@ var app = express();
 
 var mongoose = require('mongoose');
 var MONGO_URL = "mongodb://clist_user:clist_pass@ds239359.mlab.com:39359/db_clist";
-console.log(MONGO_URL)
+console.log("MONGO URL~~~~", MONGO_URL)
 mongoose.connect(MONGO_URL, function(err){
   if (err) throw "Error connecting to MLab" + err;
   else{console.log("DATABASE CONNECTED!!!")}
