@@ -32,7 +32,7 @@ router.get('/entry_indv/:_id', function(req, res, next) {
     console.log("email", post.email)
     console.log("phone", post.phone)
     console.log("uploadDate", post.uploadDate)
-
+    //res.status(200).render("post", {img: post.img});
     res.status(200).render("entry_indv",{
       img: post.img,
       title: post.title,
@@ -41,7 +41,7 @@ router.get('/entry_indv/:_id', function(req, res, next) {
       phone: post.phone,
       uploadDate: post.uploadDate
     });
-    //res.status(200).render("post", {img: post.img, title: post.title});
+
   })
   .catch((err)=> {
     console.log("error ~~~", err)

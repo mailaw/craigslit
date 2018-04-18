@@ -7,6 +7,9 @@ a {
   color: #00B7FF;
 }
 
+#red-box a{
+  color: red;
+}
 .center-div{
   margin: auto;
   width: 60%;
