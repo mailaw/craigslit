@@ -9,6 +9,9 @@ router.get('/', function(req, res, next) {
   res.render('entry');
 });
 
+router.get('/feed', function(req, res, next){
+  res.render('feed')
+})
 router.post('/savePost', function(request, response, next) {
   console.log("Data received by /savePost",request.body)
   new Post({
@@ -19,6 +22,7 @@ router.post('/savePost', function(request, response, next) {
     phone: request.body.phone
   }).save(function(err, success){
     if(err){
+      alert("Error saving post :(")
       console.log("error saving post ", err )
     }
     else{
