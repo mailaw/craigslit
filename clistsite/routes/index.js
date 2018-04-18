@@ -20,19 +20,19 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/savePost', function(request, response, next) {
-  console.log("Received by /savePost", request.body.title, request.body.description, request.body.email, request.body.phone);
+  console.log("Data received by /savePost",request.body.title, request.body.description, request.body.email, request.body.phone);
   new Post({
     img: request.body.img,
     title: request.body.title ,
     description: request.body.description ,
     email: request.body.email,
     phone: request.body.phone
-  }).save(function(err){
+  }).save(function(err, success){
     if(err){
       console.log("error saving post ", err )
     }
     else{
-      console.log("POST SAVED to DB")
+      console.log("POST SAVED to DB", success)
     }
   })
 
