@@ -21,7 +21,6 @@ router.get('/entry_indv/:_id', function(req, res, next) {
   //res.render('entry_indv');
   //res.render('entry_indv', function(err, html){
     //res.send('<p>some html{{:id}}</p>');
-    //res.send('entry_indv');
   //});
 });
 
