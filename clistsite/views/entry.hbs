@@ -92,6 +92,12 @@
             // if(message){input.removeClass("invalid").addClass("valid");}
             // else{input.removeClass("valid").addClass("invalid");}
           });
+          $('#entry_category').keyup(function(event) {
+            var input=$(this);
+            var is_name=input.val();
+            if(is_name){input.removeClass("invalid").addClass("valid");}
+            else{input.removeClass("valid").addClass("invalid");}
+          });
 
 
         <!-- After Form Submitted Validation-->
@@ -164,6 +170,12 @@
       <form id="entry" method="post" action="/savePost">
           <!-- Title -->
           <div>
+            <select id="entry_category">
+              <option selected="personals" value="personals">Personals</option>
+              <option value="forsale">For Sale</option>
+            </select>
+          </div>
+          <div>
             <!--label for="title">posting title:</label-->
             <input id="entry_title" name="title" type="text" maxlength="70" placeholder="posting title"></input>
             <span class="error">This field is required</span>
@@ -218,30 +230,23 @@
                   console.log("READER RESULT", reader.result)
                   // var result = reader.result.replace("data:"+ file.type +";base64,", '');
                   savePost(reader.result);
-                  alert("Post saved!");
                 };
               }
           }
       }
     };
 
-    // function({ img, name, title }) {
-    //   console.log(img)
-    // }
-    //
-    // function(dataObject)
-
-    //called inside getJpg
     function savePost(dataObject){
       let title = $("#entry_title").val()
       let description = $('#entry_PostingBody').val()
       let email = $('#entry_email').val()
       let phone = $('#entry_phone').val()
+      let category = $("#entry_category").val();
       $.ajax({
           method: 'POST',
           url: "http://localhost:3000/savePost",
           contentType: 'application/json',
-          data: JSON.stringify({img: dataObject, title, description, email, phone}),
+          data: JSON.stringify({img: dataObject, title, description, email, phone, category}),
           crossDomain: true,
           dataType: 'json',
           //dataType: 'json',
@@ -252,6 +257,7 @@
             console.log("couldn't save post", err);
           }
     	})
+      window.location = 'feed/'+category
     };
     </script>
   </body>

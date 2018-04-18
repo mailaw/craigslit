@@ -48,12 +48,14 @@ router.get('/entry_indv/:_id', function(req, res, next) {
     res.status(500).json(err)})
 });
 
-
-
-router.get('/feed', function(req, res, next){
+router.get('/feed/:cat', function(req, res, next){
   var postsArray = [];
+  let cat = req.params.cat;
+  if(!req.params.cat){
+    cat = req.params.category;
+  }
   return new Promise(function(resolve, reject){
-    Post.find(function(err, posts){
+    Post.find({category: cat}, function(err, posts){
       if(err){reject(err)};
       resolve(posts)
     })
@@ -63,23 +65,24 @@ router.get('/feed', function(req, res, next){
 });
 
 router.post('/savePost', function(request, response, next) {
-  console.log("Data received by /savePost",request.body.description)
+  console.log("YOYO")
   new Post({
+    cat: request.body.category,
     img: request.body.img,
-    title: request.body.title ,
+    title: request.body.title,
     description: request.body.description,
     email: request.body.email,
     phone: request.body.phone,
     date: request.body.uploadDate
-  }).save(function(err, success){
+  }).save(function(err, post){
     if(err){
       //alert("Error saving post :(")
       console.log("error saving post ", err )
     }
     else{
       //alert("Your post had been saved!");
-      console.log("POST SAVED to DB", success)
-      response.redirect("/feed")
+      console.log("POST SAVED to DB", post)
+      response.redirect("/entry_indv/"+post._id)
     }
   })
 });
