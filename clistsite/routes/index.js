@@ -12,19 +12,12 @@ Post.find({}, function(err, results){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  //this is a test
-  //res.render('index', {title: 'Express'});
-
-  Post.find({}, function(err, results){
-    if(err){console.error(err)}
-    else{
-      console.log("Posts currently in our Database \n", results)
-    }
-  })
-  res.render('entry');
+  res.render('index');
 });
 
-router.get('/')
+router.get('/', function(req, res, next) {
+  res.render('entry');
+});
 
 router.post('/savePost', function(request, response, next) {
   console.log("Received by /savePost", request.body.title, request.body.description, request.body.email, request.body.phone);
