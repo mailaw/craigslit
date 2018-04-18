@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-<title>Title</title>
+<title>{{title}}</title>
 
 <meta name="twitter:card" content="preview">
 <meta name="viewport" content="width=device-width,initial-scale=1"><link type="text/css" rel="stylesheet" media="all" href="https://www.craigslist.org/styles/cl.css?v=f2b739aac0ce30a61818c1630276321d">
@@ -97,53 +97,33 @@
                           </span>
                       </span>
                   </h2>
-                  <section class="userbody">
-                      <figure class="iw multiimage">
-                          <div class="gallery">
-                              <span class="slider-back arrow">&lt;</span>
-                              <!--span class="slider-info">image 1 of 2</span>
-                              <span class="slider-forward arrow">&gt;</span-->
-                              <div class="swipe">
-                                  <div class="swipe-wrap"><div id="1_image_8KRY4ky6UAs" data-imgid="8KRY4ky6UAs" class="slide first visible"><img src="https://images.craigslist.org/00v0v_8KRY4ky6UAs_600x450.jpg" title=" 1" alt=" 1"></div><div id="2_image_6pNV6gNmihj" data-imgid="6pNV6gNmihj" class="slide "></div></div>
-                              </div>
-                          </div>
 
-                          <div id="thumbs">
-                            <a id="1_thumb_8KRY4ky6UAs" class="thumb" data-imgid="8KRY4ky6UAs" href="https://images.craigslist.org/00v0v_8KRY4ky6UAs_600x450.jpg" title="1">
-                              <img src="https://images.craigslist.org/00v0v_8KRY4ky6UAs_50x50c.jpg" class="selected" alt=" 1">
-                            </a>
-                            <!--a id="2_thumb_6pNV6gNmihj" class="thumb" data-imgid="6pNV6gNmihj" href="https://images.craigslist.org/00O0O_6pNV6gNmihj_600x450.jpg" title="2">
-                              <img src="https://images.craigslist.org/00O0O_6pNV6gNmihj_50x50c.jpg"  alt=" 2">
-                            </a-->
-                          </div>
-                          <script type="text/javascript"><!--
-                      var imgList = [{"shortid":"8KRY4ky6UAs","url":"https://images.craigslist.org/00v0v_8KRY4ky6UAs_600x450.jpg","thumb":"https://images.craigslist.org/00v0v_8KRY4ky6UAs_50x50c.jpg","imgid":"1:00v0v_8KRY4ky6UAs"},{"shortid":"6pNV6gNmihj","url":"https://images.craigslist.org/00O0O_6pNV6gNmihj_600x450.jpg","thumb":"https://images.craigslist.org/00O0O_6pNV6gNmihj_50x50c.jpg","imgid":"1:00O0O_6pNV6gNmihj"}];
-                      --></script>
-                      </figure>
+                  <div class="print-information print-pics">{{this.img}}</div>
+                  <div class="">{{img}}</div>
+                  <div class="print-information">{{img}}</div>
 
-                      <section id="postingbody">
-                              <p>{{description}}</p>
-                              <br>
+        <section class="userbody">
+              <figure class="iw multiimage">
+                  <div class="gallery">
+                    <div class="print-information print-pics">{{img}}</div>
+                  </div>
 
+                  <div id="thumbs">
+                  </div>
+              </figure>
 
-                      </section>
-
-                      <div>
-                          <p>reply to {{this.email}} or {{this.phone}} </p>
-
-                      </div>
-
-                      <ul class="notices">
-                                  <li>do NOT contact me with unsolicited services or offers</li>
-                      </ul>
-
-                      <div class="postinginfos">
-                              <p class="postinginfo">post id: {{_id}} </p>
-                              <p class="postinginfo reveal">posted: {{this.uploadDate}}</p>
-                      </div>
-
-                      <div class="print-information print-pics">{{img}}</div>
-          </section>
+              <section id="postingbody">
+                 <p>{{this.description}}</p>
+                 <br>
+                 <p>reply to {{this.email}} or {{this.phone}} </p>
+                 <ul class="notices">
+                      <li>do NOT contact me with unsolicited services or offers</li>
+                 </ul>
+                <div class="postinginfos">
+                          <!--p class="postinginfo">post id: {{this._id}} </p-->
+                          <p class="postinginfo reveal">posted: {{this.uploadDate}}</p>
+                </div>
+            </section>
         </section>
     </section>
 </body>

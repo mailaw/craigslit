@@ -27,16 +27,25 @@ router.get('/entry_indv/:_id', function(req, res, next) {
   })
   .then((post)=>{
     console.log("Individual post", post.img)
-    // res.send("YO")
-    res.status(200).render("post", {img: post.img});
+    console.log("title", post.title)
+    console.log("description", post.description)
+    console.log("email", post.email)
+    console.log("phone", post.phone)
+    console.log("uploadDate", post.uploadDate)
+
+    res.status(200).render("entry_indv",{
+      img: post.img,
+      title: post.title,
+      description: post.description,
+      email: post.email,
+      phone: post.phone,
+      uploadDate: post.uploadDate
+    });
+    //res.status(200).render("post", {img: post.img, title: post.title});
   })
   .catch((err)=> {
     console.log("error ~~~", err)
     res.status(500).json(err)})
-  // res.render('entry_indv');
-  // res.render('entry_indv', function(err, html){
-  //   res.send('<p>some html{{:id}}</p>');
-  // });
 });
 
 
@@ -60,7 +69,8 @@ router.post('/savePost', function(request, response, next) {
     title: request.body.title ,
     description: request.body.description,
     email: request.body.email,
-    phone: request.body.phone
+    phone: request.body.phone,
+    date: request.body.uploadDate
   }).save(function(err, success){
     if(err){
       //alert("Error saving post :(")
