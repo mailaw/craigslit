@@ -23,8 +23,9 @@ router.get('/entry_indv/:_id', function(req, res, next) {
     })
   })
   .then((post)=>{
-    console.log("Individual post", post)
-    res.send("id is set as" + req.params._id + "Title: ", post.title);
+    console.log("Individual post", post.title)
+    // res.send("YO")
+    res.status(200).send("id is set as" + req.params._id + " Title: "+ post.title);
   })
   // .catch((err)=> {
   //   console.log("error ~~~", err)
