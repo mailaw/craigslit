@@ -6,6 +6,10 @@ var Post = models.Post;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  res.render('index');
+});
+
+router.get('/entry', function(req, res, next) {
   res.render('entry');
 });
 
