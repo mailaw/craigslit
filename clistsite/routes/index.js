@@ -19,6 +19,9 @@ router.get('/entry_indv/:_id', function(req, res, next) {
   //console.log(req.params);
   return new Promise(function(resolve, reject){
     Post.findById(req.params._id, function(err, post){
+      if(err){
+        reject("Error finding post", err)
+      }
         resolve(post)
     })
   })
@@ -27,13 +30,13 @@ router.get('/entry_indv/:_id', function(req, res, next) {
     // res.send("YO")
     res.status(200).send("id is set as" + req.params._id + " Title: "+ post.title);
   })
-  // .catch((err)=> {
-  //   console.log("error ~~~", err)
-  //   res.status(500).json(err)})
-  //res.render('entry_indv');
-  //res.render('entry_indv', function(err, html){
-    //res.send('<p>some html{{:id}}</p>');
-  //});
+  .catch((err)=> {
+    console.log("error ~~~", err)
+    res.status(500).json(err)})
+  // res.render('entry_indv');
+  // res.render('entry_indv', function(err, html){
+  //   res.send('<p>some html{{:id}}</p>');
+  // });
 });
 
 
@@ -47,7 +50,7 @@ router.get('/feed', function(req, res, next){
     })
     .then((posts)=> res.render('feed', {postsArray: posts}))
   })
-  .catch((err)=> console.error("error caught while finding post ", err))
+  .catch((err)=> console.error("error caught while retrieving posts", err))
 });
 
 router.post('/savePost', function(request, response, next) {
