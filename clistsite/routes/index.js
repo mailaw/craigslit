@@ -15,7 +15,7 @@ router.get('/feed', function(req, res, next){
     postsArray = posts
     console.log(posts)
   })
-  console.log(postsArray);
+  console.log("postsarray", postsArray);
   setTimeout(function(){res.render('feed', {postsArray: postsArray})}, 500)
 })
 // { uploadDate: 2018-04-17T23:34:06.729Z,
