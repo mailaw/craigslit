@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-//var??
 var Schema = mongoose.Schema;
 
 //techincally a postSchema
@@ -14,7 +13,6 @@ var postSchema = new Schema({
 });
 
 
-//potentially change clist > post
 //module.exports = mongoose.model("cList", clistSchema);
 //Export model
 module.exports = { Post : mongoose.model("cList post", postSchema) }
