@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="no-js">
   <head>
@@ -6,8 +8,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="description" content="craigslist provides local classifieds and forums for jobs, housing, for sale, personals, services, local community, and events">
 
-  <!--meta name="google-site-verification" content="Ie0Do80edB2EurJYj-bxqMdX7zkMjx_FnjtQp_XMFio">
-  <meta name="msvalidate.01" content="3402AB8563AB1E080501C21306FE7811" /-->
   <meta name="ICBM" content="35.771900, -78.638901">
   	<meta name="twitter:card" content="preview">
   	<meta property="og:site_name" content="craigslit">
@@ -18,11 +18,12 @@
   <link type="text/css" rel="stylesheet" media="all" href="https://www.craigslist.org/styles/homepage.css?v=dcfbe053aaf12ea02fc380ffc5dfe58d">
   <link type="text/css" rel="stylesheet" media="all" href="https://www.craigslist.org/styles/jquery-ui-clcustom.css?v=3b05ddffb7c7f5b62066deff2dda9339">
   <link rel="prefetch" href="https://www.craigslist.org/js/search-concat.min.js?v=c9fa94548a136143f2b7cd5c0247e0ce">
-
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="uploadPicture.js" type="text/javascript" ></script>
 
 
   </head>
+
     <script>
         $(document).ready(function(){
             $.ajax({
@@ -55,6 +56,63 @@
                 }
             });
         }
+    </script>
+
+    <script>
+      $(document).ready(function() {
+          $('#entry_title').on('input', function() {
+            var input=$(this);
+            var is_name=input.val();
+            if(is_name){input.removeClass("invalid").addClass("valid");}
+            else{input.removeClass("valid").addClass("invalid");}
+          });
+
+          $('#entry_email').on('input', function() {
+            var input=$(this);
+            var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            var is_email=re.test(input.val());
+            if(is_email){input.removeClass("invalid").addClass("valid");}
+            else{input.removeClass("valid").addClass("invalid");}
+          });
+
+          $('#entry_phone').on('input', function() {
+            var input=$(this);
+            var is_name=input.val();
+            if(is_name){input.removeClass("invalid").addClass("valid");}
+            else{input.removeClass("valid").addClass("invalid");}
+          });
+
+          $('#entry_PostingBody').keyup(function(event) {
+            var input=$(this);
+            var is_name=input.val();
+            if(is_name){input.removeClass("invalid").addClass("valid");}
+            else{input.removeClass("valid").addClass("invalid");}
+            // var message=$(this).val();
+            // console.log(message);
+            // if(message){input.removeClass("invalid").addClass("valid");}
+            // else{input.removeClass("valid").addClass("invalid");}
+          });
+
+
+        <!-- After Form Submitted Validation-->
+        $("#entry_button button").click(function(event){
+          var form_data=$("#entry").serializeArray();
+          var error_free=true;
+          for (var input in form_data){
+            var element=$("#entry_"+form_data[input]['name']);
+            var valid=element.hasClass("valid");
+            var error_element=$("span", element.parent());
+            if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+            else{error_element.removeClass("error_show").addClass("error");}
+          }
+          if (!error_free){
+            event.preventDefault();
+          }
+          else{
+            alert('No errors: Form will be submitted');
+          }
+        });
+      });
     </script>
 
 
@@ -93,36 +151,57 @@
     }());
 --></script>
 
-  <div>
-    <section class="page-container">
+ <div>
+  <section class="page-container">
       <nav id="topban" class="regular">
           <div class="regular-area">
-              <h2 class="area">chapel hill</h2>
+              <h2 class="area"><a href="\">chapel hill</a></h2>
           </div>
       </nav>
-  </div>
+  </section>
+
   <div class="center-div">
-      <form id="entry" action="">
-          <div class="row">
-            <input id="title" type="text" maxlength="70" placeholder="posting title">
+      <form id="entry" method="post" action="/savePost">
+          <!-- Title -->
+          <div>
+            <!--label for="title">posting title:</label-->
+            <input id="entry_title" name="title" type="text" maxlength="70" placeholder="posting title"></input>
+            <span class="error">This field is required</span>
+            <input id="entry_price" name="price" type="text" maxlength="20" placeholder="price">
+            <span class="error">This field is required</span>
           </div>
-          <div class="row">
-              <input id="price" placeholder="price">
+          <!-- Email-->
+          <div>
+        		<!--label for="email">Email:</label-->
+        		<input type="email" id="entry_email" name="email" value="" placeholder="email"></input>
+        		<span class="error">A valid email address is required</span>
+        	</div>
+          <!-- Phone -->
+          <div>
+        		<!--label for="phone">Website:</label-->
+        		<input type="phone" id="entry_phone" name="phone"></input>
+        		<span class="error">A valid phone number is required</span>
+        	</div>
+          <!-- Description -->
+          <div>
+            <textarea class="req" tabindex="1" rows="20" cols="60" id="entry_PostingBody" name="PostingBody" placeholder="posting body"></textarea>
+            <span class="error">Description is required</span>
           </div>
 
-          <input type="text" id="email" name="contact" value="email">
-          <input type="text" id="phone" name="contact" value="phone">
+          <div>
+            <input type="file" name=img id="upload" accept="image/jpeg,image/png,image/gif">
+          </div>
 
-          <br>
-          <br>
-          <textarea class="req" tabindex="1" rows="20" cols="40" id="PostingBody" name="PostingBody" placeholder="posting body"></textarea>
-          <br>
-          <input type="file" id="upload" accept="image/jpeg">
-          <button onclick="getJpg()">Submit</button>
+
+          <div id="entry_submit">
+            <button type="submit" onclick="getJpg()">Submit</button>
+          </div>
       </form>
   </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</div>
+
     <script>
+
 
     function getJpg(){
     	var upload = document.getElementById("upload");
@@ -136,21 +215,15 @@
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = function(){
-                  var result = reader.result.replace("data:"+ file.type +";base64,", '');
-                  console.log("yo~~~~~\n", result);
-                  savePost(result);
+                  console.log("READER RESULT", reader.result)
+                  // var result = reader.result.replace("data:"+ file.type +";base64,", '');
+                  savePost(reader.result);
+                  alert("Post saved!");
                 };
               }
           }
       }
-      else {
-          if (upload.value == "") {
-              alert("Select one or more files.");
-          } else {
-              alert("The files property is not supported by your browser!");
-          }
-      }
-    }
+    };
 
     // function({ img, name, title }) {
     //   console.log(img)
@@ -160,10 +233,10 @@
 
     //called inside getJpg
     function savePost(dataObject){
-      let title = $("#title").val()
-      let description = $('#PostingBody').val()
-      let email = $('#email').val()
-      let phone = $('#phone').val()
+      let title = $("#entry_title").val()
+      let description = $('#entry_PostingBody').val()
+      let email = $('#entry_email').val()
+      let phone = $('#entry_phone').val()
       $.ajax({
           method: 'POST',
           url: "http://localhost:3000/savePost",

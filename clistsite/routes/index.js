@@ -6,44 +6,69 @@ var Post = models.Post;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  res.render('index');
+});
+
+router.get('/entry', function(req, res, next) {
   res.render('entry');
 });
 
+
+router.get('/entry_indv/:_id', function(req, res, next) {
+  //var postID = :_id
+  //console.log(req.params);
+  return new Promise(function(resolve, reject){
+    Post.findById(req.params._id, function(err, post){
+        resolve(post)
+    })
+  })
+  .then((post)=>{
+    console.log("Individual post", post)
+    res.send("id is set as" + req.params._id + "Title: ", post.title);
+  })
+  // .catch((err)=> {
+  //   console.log("error ~~~", err)
+  //   res.status(500).json(err)})
+  //res.render('entry_indv');
+  //res.render('entry_indv', function(err, html){
+    //res.send('<p>some html{{:id}}</p>');
+    //res.send('entry_indv');
+  //});
+});
+
+
+
 router.get('/feed', function(req, res, next){
   var postsArray = [];
-  Post.find(function(err, posts){
-    postsArray = posts
-    console.log(posts)
+  return new Promise(function(resolve, reject){
+    Post.find(function(err, posts){
+      if(err){reject(err)};
+      resolve(posts)
+    })
+    .then((posts)=> res.render('feed', {postsArray: posts}))
   })
-  console.log("postsarray", postsArray);
-  setTimeout(function(){res.render('feed', {postsArray: postsArray})}, 500)
-})
-// { uploadDate: 2018-04-17T23:34:06.729Z,
-//     _id: 5ad6846e02ab0c105eb08945,
-//     title: 'asd',
-//     description: 'asd',
-//     email: 'email',
-//     phone: 'phone',
-//     __v: 0 }
+  .catch((err)=> console.error("error caught while finding post ", err))
+});
+
 router.post('/savePost', function(request, response, next) {
-  console.log("Data received by /savePost",request.body)
+  console.log("Data received by /savePost",request.body.description)
   new Post({
     img: request.body.img,
     title: request.body.title ,
-    description: request.body.description ,
+    description: request.body.description,
     email: request.body.email,
     phone: request.body.phone
   }).save(function(err, success){
     if(err){
-      alert("Error saving post :(")
+      //alert("Error saving post :(")
       console.log("error saving post ", err )
     }
     else{
-      alert("Your post had been saved!");
+      //alert("Your post had been saved!");
       console.log("POST SAVED to DB", success)
-      res.send("entry")
+      response.redirect("/feed")
     }
   })
-})
+});
 
 module.exports = router;
