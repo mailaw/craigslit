@@ -123,16 +123,6 @@
   </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script>
-    //image.data, img.contenttype title, expiration date, upload date
-
-    // function myFunction() {
-    //     var x = document.createElement("Input");
-    //     x.setAttribute("type", "file");
-    //     x.setAttribute("id", "upload");
-    //     x.setAttribute("accept", "image/jpeg");
-    //     x.setAttribute("onchange", "getJpg()");
-    //     document.body.appendChild(x);
-    // }
 
     function getJpg(){
     	var upload = document.getElementById("upload");
@@ -174,11 +164,6 @@
       let description = $('#PostingBody').val()
       let email = $('#email').val()
       let phone = $('#phone').val()
-      // title: request.body.title ,
-    // description: request.body.description ,
-    // email: request.body.email,
-    // phone: request.body.phone
-
       $.ajax({
           method: 'POST',
           url: "http://localhost:3000/savePost",

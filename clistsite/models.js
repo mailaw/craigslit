@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 //techincally a postSchema
 var postSchema = new Schema({
-    img: { data: String, contentType: String },
+    img: {type: String},
     title: {type: String, required: true, max: 300},
     description: {type: String, required: true},
     email: {type: String, required: true, max: 100},
