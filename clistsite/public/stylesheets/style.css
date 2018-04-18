@@ -1,4 +1,4 @@
-/*body {
+body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -6,4 +6,10 @@
 a {
   color: #00B7FF;
 }
-*/
+
+.center-div{
+  margin: auto;
+  width: 60%;
+  border: 3px solid blue;
+  padding: 10px;
+}
