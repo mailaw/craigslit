@@ -21,7 +21,7 @@ router.get('/feed', function(req, res, next){
   })
   console.log(postsArray);
   setTimeout(function(){res.render('feed', {postsArray: postsArray})}, 500)
-})
+});
 // { uploadDate: 2018-04-17T23:34:06.729Z,
 //     _id: 5ad6846e02ab0c105eb08945,
 //     title: 'asd',
@@ -39,15 +39,15 @@ router.post('/savePost', function(request, response, next) {
     phone: request.body.phone
   }).save(function(err, success){
     if(err){
-      alert("Error saving post :(")
+      //alert("Error saving post :(")
       console.log("error saving post ", err )
     }
     else{
-      alert("Your post had been saved!");
+      //alert("Your post had been saved!");
       console.log("POST SAVED to DB", success)
-      res.send("entry")
+      response.send("entry")
     }
   })
-})
+});
 
 module.exports = router;
