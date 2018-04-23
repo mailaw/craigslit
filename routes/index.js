@@ -39,6 +39,7 @@ router.get('/entry_indv/:_id', function(req, res, next) {
       description: post.description,
       email: post.email,
       phone: post.phone,
+      price: post.price,
       uploadDate: post.uploadDate
     });
 
@@ -65,14 +66,15 @@ router.get('/feed/:cat', function(req, res, next){
 });
 
 router.post('/savePost', function(request, response, next) {
-  console.log("YOYO")
+  console.log("Receieved by index.js /savePost", request.body)
   new Post({
-    cat: request.body.category,
+    category: request.body.category,
     img: request.body.img,
     title: request.body.title,
     description: request.body.description,
     email: request.body.email,
     phone: request.body.phone,
+    price: request.body.price,
     date: request.body.uploadDate
   }).save(function(err, post){
     if(err){

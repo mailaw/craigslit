@@ -170,10 +170,8 @@
       <form id="entry" method="post" action="/savePost">
           <!-- Title -->
           <div>
-            <select id="entry_category">
-              <option selected="personals" value="personals">Personals</option>
-              <option value="forsale">For Sale</option>
-            </select>
+            <input type="radio" name="entry_category" value="personals">Personals
+            <input type="radio" name="entry_category" value="forsale">Free and For Sale
           </div>
           <div>
             <!--label for="title">posting title:</label-->
@@ -213,8 +211,6 @@
 </div>
 
     <script>
-
-
     function getJpg(){
     	var upload = document.getElementById("upload");
       if ('files' in upload) { //has name, type, and size
@@ -241,17 +237,28 @@
       let description = $('#entry_PostingBody').val()
       let email = $('#entry_email').val()
       let phone = $('#entry_phone').val()
-      let category = $("#entry_category").val();
+      let category = $("input:radio[name=entry_category]:checked").val();
+      let price = $("#entry_price").val()
+      console.log("saving this post to db\n", title, description, email, phone, category,price, "\n")
+      console.log("Description ENTRY,HBS", description)
       $.ajax({
           method: 'POST',
           url: "http://localhost:3000/savePost",
           contentType: 'application/json',
-          data: JSON.stringify({img: dataObject, title, description, email, phone, category}),
+          data: JSON.stringify(
+            {"img": dataObject, 
+            "title": title, 
+            "description": description, 
+            "email": email, 
+            "phone": phone, 
+            "category": category, 
+            "price": price}
+          ),
           crossDomain: true,
           dataType: 'json',
           //dataType: 'json',
           success: function(data) {
-            console.log("post saved~ ", data);
+            console.log("post saved~ ");
           },
           error: function(err){
             console.log("couldn't save post", err);
